@@ -1,8 +1,9 @@
+import com.codeclan.example.db.DBFolder;
 import com.codeclan.example.db.DBHelper;
 import com.codeclan.example.models.Folder;
 import com.codeclan.example.models.File;
 
-
+import java.util.List;
 
 
 public class Runner {
@@ -38,5 +39,9 @@ public class Runner {
         DBHelper.save(file7);
         DBHelper.save(file8);
         DBHelper.save(file9);
+
+        List<File> files = DBFolder.getFilesInFolder(folder1);
+
+
     }
 }
