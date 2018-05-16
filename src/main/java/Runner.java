@@ -2,19 +2,25 @@ import com.codeclan.example.db.DBFolder;
 import com.codeclan.example.db.DBHelper;
 import com.codeclan.example.models.Folder;
 import com.codeclan.example.models.File;
+import com.codeclan.example.models.Owner;
 
 import java.util.List;
-
 
 public class Runner {
 
     public static void main(String[] args) {
 
-        Folder folder1 = new Folder("Folder1");
-        Folder folder2 = new Folder("Folder2");
-        Folder folder3 = new Folder("Folder3");
-        Folder folder4 = new Folder("Folder4");
-        Folder folder5 = new Folder("Folder5");
+        Owner owner1 = new Owner("Name 1", "Username 1");
+        Owner owner2 = new Owner("Name 2", "Username 2");
+
+        DBHelper.save(owner1);
+        DBHelper.save(owner2);
+
+        Folder folder1 = new Folder("Folder1", owner1);
+        Folder folder2 = new Folder("Folder2", owner1);
+        Folder folder3 = new Folder("Folder3", owner1);
+        Folder folder4 = new Folder("Folder4", owner2);
+        Folder folder5 = new Folder("Folder5", owner2);
         DBHelper.save(folder1);
         DBHelper.save(folder2);
         DBHelper.save(folder3);
@@ -40,7 +46,11 @@ public class Runner {
         DBHelper.save(file8);
         DBHelper.save(file9);
 
-        List<File> files = DBFolder.getFilesInFolder(folder1);
+        List<File> all_files = DBHelper.getAll(File.class);
+        List<Folder> all_folders = DBHelper.getAll(Folder.class);
+        List<Owner> all_owners = DBHelper.getAll(Owner.class);
+
+        List<File> folder1_files = DBFolder.getFilesInFolder(folder1);
 
 
     }

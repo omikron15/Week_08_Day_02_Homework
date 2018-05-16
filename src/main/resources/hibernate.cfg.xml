@@ -13,5 +13,6 @@
         <property name="show_sql">true</property>
         <mapping class="com.codeclan.example.models.File"/>
         <mapping class="com.codeclan.example.models.Folder"/>
+        <mapping class="com.codeclan.example.models.Owner"/>
     </session-factory>
 </hibernate-configuration>
